@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="/icons/icon_sistem.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="navbar-item logout" onclick="logout()">Sair</a>
+    </nav>
+    <div class="formulario">
+        <form id="buscar-form">
+            <button type="button" id="fechar-form" onclick="fecharFormulario()">X</button>
+            <select name="saida" id="saida" required>
+                <option value="" disabled selected>Saída</option>
+                <option value="Minas Gerais">Minas Gerais</option>
+                <option value="Colatina">Colatina</option>
+            </select>
+            <select name="destino" id="destino" required>
+                <option value="" disabled selected>Destino</option>
+                <option value="Vitória">Vitória</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+            </select>
+            <select name="sacos" id="sacos" required>
+                <option value="" disabled selected>Quantidade de Sacos</option>
+                <option value="320">320</option>
+                <option value="360">360</option>
+                <option value="440">440</option>
+            </select>
+            <button type="submit" onclick="Buscar(event)">Buscar</button>
+        </form>
+        <div id="alerta"></div>
+    </div>
+
+    <table class="tabela" id="tabela">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Valor</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaCorpo">
+        </tbody>
+    </table>
+
+    <script>
+        function Buscar(event) {
+    // Impede o envio do formulário padrão (que recarregaria a página)
+    event.preventDefault();
+
+    var tabela = document.getElementById('tabela'); // A tabela onde os dados serão exibidos
+    var formulario = document.querySelector('.formulario'); // O formulário de busca
+
+    // Verifica se o formulário é válido
+    if (document.getElementById('buscar-form').checkValidity()) {
+        // Se for válido, exibe a tabela
+        tabela.style.display = "table";
+
+        // Mover o formulário para o topo e centralizar
+        formulario.classList.add('centralizado');
+    } else {
+        // Caso contrário, apenas não faz nada (o navegador já irá exibir a mensagem padrão)
+        return;
+    }
+}
+
+function fecharFormulario() {
+    var formulario = document.querySelector('.formulario'); // O formulário de busca
+    var tabela = document.getElementById('tabela'); // A tabela onde os dados são exibidos
+
+    // Esconde a tabela novamente
+    tabela.style.display = "none";
+
+    // Remove a classe que centraliza o formulário e restaura sua posição
+    formulario.classList.remove('centralizado');
+
+    // Resetar os campos do formulário para o estado inicial
+    resetFormulario();
+}
+
+function resetFormulario() {
+    var formulario = document.getElementById('buscar-form');
+
+    // Reseta os campos de seleção para o valor inicial
+    formulario.reset(); // Esse método reseta os inputs de seleção para o estado inicial
+}
+
+    </script>
+</body>
+
+</html>

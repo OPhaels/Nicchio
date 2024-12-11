@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+
+<body>
+    <main>
+        <section>
+            <!-- Exibe as mensagens de erro -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                            <li class="alert alert-{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            <!-- Formulário de Login -->
+            <form action="/" method="POST">
+                <fieldset>
+                    <div class="box">
+                        <h1>Bem-vindo!</h1>
+                        <p>Entre com seu login ou <a href="#" id="cadastro">Cadastre-se</a></p>
+                    </div>
+                    <div class="inputBox">
+                        <label for="email">E-mail</label>
+                        <input type="text" name="user" id="email" placeholder="Digite seu e-mail" required>
+                    </div><br>
+                    <div class="inputBox">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+                        <i class="bi bi-eye-slash-fill" id="bnt_ver" onclick="verSenha()"><img
+                                src="/static/imagens/fechado.png" id="ver"></i>
+                    </div>
+                    <div class="inputBtn">
+                        <button type="submit" name="submit" id="submit">Entrar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Função para alternar a visibilidade da senha
+        function verSenha() {
+            var img = document.getElementById("ver");
+            var senha = document.getElementById("senha");
+            if (img.src.includes("aberto.png")) {
+                img.src = "/static/imagens/fechado.png";
+                senha.type = "password";
+            } else {
+                img.src = "/static/imagens/aberto.png";
+                senha.type = "text";
+            }
+        }
+    </script>
+</body>
+
+</html>

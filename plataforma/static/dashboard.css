@@ -1,0 +1,201 @@
+body {
+    background: url(/static/imagens/background_coffe.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    transition: background 0.5s ease;
+}
+
+nav {
+    width: 100%;
+    background-color: black;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    color: white;
+}
+
+.navbar-item {
+    font-size: 18px;
+}
+
+.logout {
+    background: red;
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: background 0.3s;
+}
+
+.logout:hover {
+    background: darkred;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 40px; /* para compensar a navbar fixa */
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.formulario select,
+.formulario button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    background: rgba(255, 255, 255);
+    color: black;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.formulario select:hover,
+.formulario button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+#alerta {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    display: none; /* Oculta por padrão */
+    transition: opacity 0.5s ease;
+}
+
+.tabela {
+    border-collapse: collapse;
+    width: 80%;
+    display: none;
+    margin: 20px auto;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+    animation: fadeIn 1s ease-in;
+}
+
+.tabela th,
+.tabela td {
+    border: 1px solid #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    transition: background 0.3s;
+    box-shadow: 0 0 6px black;
+}
+
+.tabela th {
+    background-color: rgba(255, 255, 255);
+    color: black;
+}
+
+.tabela td {
+    background: rgba(255, 255, 255);
+    color: black;
+}
+
+.tabela tr:hover td {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+input[type="number"] {
+    width: 70px;
+    transition: border 0.3s;
+}
+
+input[type="number"]:focus {
+    border: 2px solid #4B5D67;
+    outline: none;
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.icon-button img {
+    transition: filter 0.3s;
+}
+
+.icon-button:hover img {
+    filter: brightness(0.8); /* Altera a cor ao passar o mouse */
+}
+
+#fechar-form {
+    background-color: transparent;
+    border: none;
+    color: white; /* Cor do X em branco */
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: ease 1s;
+}
+
+/* Efeito hover para quando passar o mouse no X */
+#fechar-form:hover {
+    color: #ff4d4d; /* Cor de destaque ao passar o mouse (vermelho claro) */
+    text-shadow: 0px 0px 10px white;
+    transition: ease 1s;
+}
+
+
+/* Animação para mover o formulário para o topo */
+@keyframes moveToTop {
+    from {
+        top: 100px;
+        opacity: 1;
+    }
+    to {
+        top: 20px;
+        opacity: 1;
+    }
+}
+
+/* Quando o formulário estiver centralizado */
+.formulario.centralizado {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: moveToTop 0.5s ease-in;
+}
