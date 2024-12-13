@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/login.css">
 </head>
 
-<body>
+<body class="d-flex justify-content-center align-items-center vh-100">
     <main>
         <section>
             <!-- Exibe as mensagens de erro -->
@@ -27,7 +27,7 @@
                 <fieldset>
                     <div class="box">
                         <h1>Bem-vindo!</h1>
-                        <p>Entre com seu login ou <a href="#" id="cadastro">Cadastre-se</a></p>
+                        <p>Entre com seu login ou <a href="{{url_for('cadastro')}}" id="cadastro">Cadastre-se</a></p>
                     </div>
                     <div class="inputBox">
                         <label for="email">E-mail</label>

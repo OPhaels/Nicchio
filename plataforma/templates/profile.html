@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuário</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            display: flex;
+            text-align: center;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .bio {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        nav {
+            width: 100%;
+            background-color: black;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+            color: white;
+        }
+
+        .logout {
+            background: red;
+            border-radius: 10px;
+            padding: 10px 20px;
+            transition: background 0.3s;
+        }
+
+        .logout:hover {
+            background: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/" class="navbar-item logout" onclick="logout()">Sair</a>
+        <a href="{{url_for('dashboard')}}">Dashboard</a>
+    </nav>
+    <div class="container">
+        <div class="profile-card">
+            <img src="/plataforma/static/imagens/perfil.png" class="profile-img">
+            <h1>{{(usuario)}}</h1>
+            <p class="bio">Desenvolvedor Web apaixonado por tecnologia e inovação.</p>
+            <button id="colorButton">Mudar Cor de Fundo</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('colorButton').addEventListener('click', function () {
+            const colors = ['#f0f0f0', '#FFEB3B', '#4CAF50', '#FF5722', '#9C27B0'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        });
+    </script>
+</body>
+
+</html>
