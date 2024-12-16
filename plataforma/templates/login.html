@@ -6,32 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/static/login.css">
+    <link rel="stylesheet" href="static/nav.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/icon_sistem.png') }}" type="image/x-icon">
 </head>
 
 <body class="d-flex justify-content-center align-items-center vh-100">
     <main>
         <section>
-            <!-- Exibe as mensagens de erro -->
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <ul>
-                        {% for category, message in messages %}
-                            <li class="alert alert-{{ category }}">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-
-            <!-- Formulário de Login -->
             <form action="/" method="POST">
                 <fieldset>
                     <div class="box">
                         <h1>Bem-vindo!</h1>
-                        <p>Entre com seu login ou <a href="{{url_for('cadastro')}}" id="cadastro">Cadastre-se</a></p>
+                        <p>Entre com seu login ou <a href="{{ url_for('cadastro') }}" id="cadastro">Cadastre-se</a></p>
                     </div>
                     <div class="inputBox">
                         <label for="email">E-mail</label>
-                        <input type="text" name="user" id="email" placeholder="Digite seu e-mail" required>
+                        <input type="text" name="email" id="email" placeholder="Digite seu e-mail" required>
                     </div><br>
                     <div class="inputBox">
                         <label for="senha">Senha</label>
@@ -45,6 +35,15 @@
                 </fieldset>
             </form>
         </section>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div id="flash-messages">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
     </main>
 
     <script>
@@ -60,6 +59,18 @@
                 senha.type = "text";
             }
         }
+
+        setTimeout(function () {
+    var flashMessages = document.getElementById('flash-messages');
+    if (flashMessages) {
+        flashMessages.classList.add('fade-out');
+        
+        setTimeout(function () {
+            flashMessages.style.display = 'none';
+        }, 1000);  
+    }
+}, 2000); 
+
     </script>
 </body>
 

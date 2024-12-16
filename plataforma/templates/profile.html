@@ -4,22 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/icon_sistem.png') }}" type="image/x-icon">
     <title>Perfil de Usuário</title>
+    <link rel="stylesheet" href="/static/nav.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        body{
+            padding: 20px;
         }
-
         .container {
             width: 300px;
             margin: 100px auto;
@@ -27,8 +19,13 @@
             text-align: center;
         }
 
+        p{
+            color: white;
+        }
+
         .profile-card {
-            background-color: #fff;
+            background-color: #ffffffe2;
+            box-shadow: 0 0 5px white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -48,13 +45,7 @@
             margin-bottom: 10px;
         }
 
-        .bio {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        button {
+        #dados {
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -68,64 +59,38 @@
             background-color: #45a049;
         }
 
-        nav {
-            width: 100%;
-            background-color: black;
-            padding: 15px;
-            display: flex;
-            justify-content: space-around;
-            position: fixed;
-            top: 0;
-            z-index: 1;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.02);
-            color: white;
-        }
-
-        .logout {
-            background: red;
-            border-radius: 10px;
-            padding: 10px 20px;
-            transition: background 0.3s;
-        }
-
-        .logout:hover {
-            background: darkred;
-        }
     </style>
 </head>
 
 <body>
-    <nav>
-        <a href="/" class="navbar-item logout" onclick="logout()">Sair</a>
-        <a href="{{url_for('dashboard')}}">Dashboard</a>
-    </nav>
+
+        
+        <body>
+            <nav>
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button type="submit" class="navbar logout">Sair</button>
+                </form>
+                <a class="dem" href="{{url_for('dashboard')}}">Dashboard</a>
+        
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    <p>{{ message }}</p>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </nav>
     <div class="container">
         <div class="profile-card">
-            <img src="/plataforma/static/imagens/perfil.png" class="profile-img">
-            <h1>{{(usuario)}}</h1>
-            <p class="bio">Desenvolvedor Web apaixonado por tecnologia e inovação.</p>
-            <button id="colorButton">Mudar Cor de Fundo</button>
+            <img class="profile-img" src="{{ url_for('static', filename='imagens/perfil.png') }}">
+            <button id="dados">Alterar dados</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('colorButton').addEventListener('click', function () {
-            const colors = ['#f0f0f0', '#FFEB3B', '#4CAF50', '#FF5722', '#9C27B0'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            document.body.style.backgroundColor = randomColor;
-        });
+  
     </script>
 </body>
 

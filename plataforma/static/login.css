@@ -40,6 +40,10 @@ fieldset {
     text-decoration: underline;
 }
 
+p{
+    font: 12pt bolder;
+}
+
 .inputBox,
 .inputBtn {
     width: 230px;
@@ -92,4 +96,29 @@ label {
 
 #ver{
     width: 20px;
+}
+
+li{
+    background: white;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: red;
+    margin: 20px auto;
+    text-decoration: none;
+    list-style: none;
+}
+
+ul{
+    list-style: none;
+    text-decoration: none;
+}
+#flash-messages {
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Gradual fading */
+}
+
+#flash-messages.fade-out {
+    opacity: 0;
 }
