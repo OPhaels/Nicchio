@@ -109,6 +109,7 @@ def register_routes(app):
 
     #4 Rota de perfil
     @app.route('/perfil/')
+    @login_required
     def profile():
         flash(f"LOG: {session.get('user_name', 'Usuario').upper()}", 'success')
         return render_template("profile.html")
