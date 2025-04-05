@@ -1,1 +1,1 @@
-
+O arquivo para ser utilizado precisa ter um banco de dados conforme apresenta na documentação que será inserida após a conclusão do projeto. Em breve poderá realizar a criação de planilhas de itens que serão armazenados em um banco de dados em nuvem, para melhor organizar seu estoque, produtos e cálculos para montantes. 
