@@ -4,17 +4,17 @@
 
 🚀 Como Executar?
 
-# Crie o ambiente virtual
-python -m venv venv
+Crie o ambiente virtual
+- python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# Instale as dependências
+- Instale as dependências
 pip install django
 
-# Rode as migrações iniciais
+- Rode as migrações iniciais
 python manage.py migrate
 
-# Inicie o servidor
+- Inicie o servidor
 
 
 python manage.py runserver
