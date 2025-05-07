@@ -1,1 +1,0 @@
-from plataforma import app

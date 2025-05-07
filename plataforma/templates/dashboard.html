@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/static/dashboard.css">
-    <link rel="stylesheet" href="/static/nav.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="nav.css">
     <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/icon_sistem.png') }}" type="image/x-icon">
     <meta http-equiv="Cache-Control" content="no-store" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -20,16 +20,6 @@
             <button type="submit" class="navbar logout">Sair</button>
         </form>
         <a class="dem" href="{{ url_for('profile') }}">Perfil</a>
-
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for category, message in messages %}
-        <div class="alert alert-{{ category }}">
-            <p>{{ message }}</p>
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
     </nav>
 
 
@@ -63,137 +53,6 @@
     </div>
 
     <script>
-        function Buscar(event) {
-            event.preventDefault();
-
-            var saida = document.getElementById('saida').value;
-            var destino = document.getElementById('destino').value;
-            var sacos = document.getElementById('sacos').value;
-
-            var tabelaContainer = document.getElementById('tabela-container');
-            var alerta = document.getElementById('alerta');
-
-            if (saida && destino && sacos) {
-                tabelaContainer.style.display = "block";
-                alerta.innerHTML = '';
-
-                fetch('/buscar', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        saida: saida,
-                        destino: destino,
-                        sacos: sacos,
-                    }),
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            alerta.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
-                            tabelaContainer.style.display = "none";
-                        } else {
-                            let tabelaCorpo = document.getElementById('tabelaCorpo');
-                            tabelaCorpo.innerHTML = '';
-                            if (data.length > 0) {
-                                data.forEach(row => {
-                                    let divRow = document.createElement('div');
-                                    divRow.classList.add('tabela-linha');
-
-                                    let campos = [
-                                        "qnt", "thc", "certificado", "fumigacao", "ccc", "cecafe", "ovacao",
-                                        "despacho", "taxa_porto_isps", "taxa_bl", "lacre", "retirada_container",
-                                        "taxa_scanner", "taxa_elf", "forracao", "pesagem", "pre_steking",
-                                        "envio_dhl", "despacho_banc", "sacaria"
-                                    ];
-                                    campos.forEach(campo => {
-                                        divRow.innerHTML += `
-                                    <div class="tabela-coluna">
-                                        <strong>${campo.charAt(0).toUpperCase() + campo.slice(1)} : </strong>
-                                        <span class="valores" id="${campo}_${row.item}">${row[campo]}</span>
-                                        <div class="botao-container">
-                                            <button id="btn-central" onclick="editarValor('${campo}', '${row.item}')">Editar</button>
-                                        </div>
-                                    </div>
-                                    `;
-                                    });
-
-                                    tabelaCorpo.appendChild(divRow);
-                                });
-                            } else {
-                                alerta.innerHTML = `<div class="alert alert-warning">Nenhum resultado encontrado.</div>`;
-                                tabelaContainer.style.display = "none";
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erro ao buscar dados:', error);
-                        alerta.innerHTML = `<div class="alert alert-danger">Ocorreu um erro ao buscar os dados.</div>`;
-                        tabelaContainer.style.display = "none";
-                    });
-            } else {
-                alerta.innerHTML = `<div class="alert alert-warning">Por favor, preencha todos os campos.</div>`;
-            }
-        }
-
-        function editarValor(campo, itemId) {
-            console.log(`Campo: ${campo}, Item ID: ${itemId}`); // Log para depuração
-
-            if (!itemId || itemId === 'undefined') {
-                alert("ID do item não encontrado.");
-                return;
-            }
-
-            var valorOriginal = document.getElementById(campo + '_' + itemId).innerText;
-            var novoValor = prompt(`Digite o novo valor para ${campo}:`, valorOriginal);
-
-            if (novoValor !== null && novoValor.trim() !== "") {
-                novoValor = parseFloat(novoValor);
-
-                if (isNaN(novoValor)) {
-                    alert("Por favor, insira um valor numérico válido.");
-                    return;
-                }
-
-                // Atualiza o valor na interface
-                document.getElementById(campo + '_' + itemId).innerText = novoValor;
-
-                // Envia a atualização para o backend
-                fetch('/atualizar', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        saida: document.getElementById('saida').value,
-                        destino: document.getElementById('destino').value,
-                        itemId: itemId,  // Aqui, itemId é o 'item'
-                        campo: campo,
-                        novoValor: novoValor,
-                    }),
-                })
-                    .then(response => {
-                        console.log('Resposta do servidor:', response);
-                        if (!response.ok) {
-                            throw new Error('Erro ao comunicar com o servidor');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('Dados retornados:', data);
-                        if (data.error) {
-                            alert(`Erro ao atualizar valor: ${data.error}`);
-                        } else {
-                            alert(`Valor de ${campo} atualizado com sucesso!`);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erro ao atualizar valor:', error);
-                        alert('Ocorreu um erro ao atualizar o valor.');
-                    });
-            }
-        }
 
     </script>
 

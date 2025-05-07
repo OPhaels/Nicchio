@@ -9,89 +9,28 @@
     <link rel="stylesheet" href="/static/nav.css">
     <style>
 
-        body{
-            padding: 20px;
-        }
-        .container {
-            width: 300px;
-            margin: 100px auto;
-            display: flex;
-            text-align: center;
-        }
-
-        p{
-            color: white;
-        }
-
-        .profile-card {
-            background-color: #ffffffe2;
-            box-shadow: 0 0 5px white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 300px;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        #dados {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
     </style>
 </head>
 
 <body>
 
-        
-        <body>
-            <nav>
-                <form action="{{ url_for('logout') }}" method="POST">
-                    <button type="submit" class="navbar logout">Sair</button>
-                </form>
-                <a class="dem" href="{{url_for('dashboard')}}">Dashboard</a>
-        
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                    <p>{{ message }}</p>
-                </div>
-                {% endfor %}
-                {% endif %}
-                {% endwith %}
-            </nav>
-    <div class="container">
-        <div class="profile-card">
-            
-            <button id="dados">Alterar dados</button>
-        </div>
-    </div>
 
-    <script>
-  
-    </script>
-</body>
+    <body>
+        <nav>
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button type="submit" class="navbar logout">Sair</button>
+            </form>
+            <a class="dem" href="{{url_for('dashboard')}}">Dashboard</a>
+            <div class="container">
+                <div class="profile-card">
+
+                    <button id="dados">Alterar dados</button>
+                </div>
+            </div>
+
+            <script>
+
+            </script>
+    </body>
 
 </html>

@@ -1,90 +1,87 @@
 body {
-    position: relative;
-    background: url(/static/imagens/background_coffe.jpg);
-    background-attachment: fixed;
-    background-attachment: fixed;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    transition: background 0.5s ease;
-    font-family:Arial, Helvetica, sans-serif;
+  position: relative;
+  background: url(plataforma/imagens/background_coffe.jpg);
+  background-attachment: fixed;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background 0.5s ease;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: transparent;
-    box-shadow: 
-        inset 50px 50px 100px rgba(0, 0, 0, 0.6), /* Sombra nos cantos superiores e inferiores */
-        inset -50px -50px 100px rgba(0, 0, 0, 0.6); /* Sombra nos cantos inferiores */
-    pointer-events: none;
-    z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  box-shadow: inset 50px 50px 100px rgba(0, 0, 0, 0.6),
+    inset -50px -50px 100px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: -1;
 }
 
-
 nav {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.676);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.273);
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    margin-bottom: 15px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.676);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.273);
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  margin-bottom: 15px;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    transition: background 0.3s, transform 0.3s;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.3s;
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: scale(1.02);
-    color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+  color: white;
 }
 
 .dem {
-    width: 100px;
-    text-align: center;
-    position: relative;
-    font-size: 10pt;
-    top: 3px;
-    height: 20px;
-    color: white;
-    text-transform: uppercase;
+  width: 100px;
+  text-align: center;
+  position: relative;
+  font-size: 10pt;
+  top: 3px;
+  height: 20px;
+  color: white;
+  text-transform: uppercase;
 }
 
-p{
-    font-size: 10pt;
+p {
+  font-size: 10pt;
 }
-
 
 .logout {
-    background: red;
-    border-radius: 10px; 
-    padding: 10px 20px;
-    border: none;
-    font-size: 10pt;
-    color: white;
-    transition: background 0.3s;
-    text-transform: uppercase;
+  background: red;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 10pt;
+  color: white;
+  transition: background 0.3s;
+  text-transform: uppercase;
 }
 
 .logout:hover {
-    background:rgb(229, 91, 91);
-    text-transform: uppercase;
+  background: rgb(229, 91, 91);
+  text-transform: uppercase;
 }

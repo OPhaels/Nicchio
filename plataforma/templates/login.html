@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/static/login.css">
-    <link rel="stylesheet" href="static/nav.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="nav.css">
     <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/icon_sistem.png') }}" type="image/x-icon">
 </head>
 
@@ -27,7 +27,7 @@
                         <label for="senha">Senha</label>
                         <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
                         <i class="bi bi-eye-slash-fill" id="bnt_ver" onclick="verSenha()"><img
-                                src="/static/imagens/fechado.png" id="ver"></i>
+                                src="plataforma/imagens/fechado.png" id="ver"></i>
                     </div>
                     <div class="inputBtn">
                         <button type="submit" name="submit" id="submit">Entrar</button>
@@ -35,15 +35,6 @@
                 </fieldset>
             </form>
         </section>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        <div id="flash-messages">
-            {% for category, message in messages %}
-            <li class="{{ category }}">{{ message }}</li>
-            {% endfor %}
-        </div>
-        {% endif %}
-        {% endwith %}
     </main>
 
     <script>
@@ -52,24 +43,24 @@
             var img = document.getElementById("ver");
             var senha = document.getElementById("senha");
             if (img.src.includes("aberto.png")) {
-                img.src = "/static/imagens/fechado.png";
+                img.src = "plataforma/imagens/fechado.png";
                 senha.type = "password";
             } else {
-                img.src = "/static/imagens/aberto.png";
+                img.src = "plataforma/imagens/aberto.png";
                 senha.type = "text";
             }
         }
 
         setTimeout(function () {
-    var flashMessages = document.getElementById('flash-messages');
-    if (flashMessages) {
-        flashMessages.classList.add('fade-out');
-        
-        setTimeout(function () {
-            flashMessages.style.display = 'none';
-        }, 1000);  
-    }
-}, 2000); 
+            var flashMessages = document.getElementById('flash-messages');
+            if (flashMessages) {
+                flashMessages.classList.add('fade-out');
+
+                setTimeout(function () {
+                    flashMessages.style.display = 'none';
+                }, 1000);
+            }
+        }, 2000);
 
     </script>
 </body>
