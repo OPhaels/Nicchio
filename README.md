@@ -61,12 +61,16 @@ python manage.py runserver
     │   │       ├── dashboard.html
     │   │       ├── login.html
     │   │       └── profile.html
-    │   ├── admin.py
-    │   ├── apps.py
-    │   ├── models.py
-    │   ├── views.py
-    │   ├── urls.py
-    │   └── forms.py
+    │   │
+    |   ├── __init__.py         # Torna o diretório um pacote Python
+    |   ├── admin.py            # Registro de modelos no painel admin do Django
+    |   ├── apps.py             # Configurações do app
+    |   ├── models.py           # Definições do banco de dados (estruturas/tabelas)
+    |   ├── views.py            # Lógica das páginas (controladores)
+    |   ├── urls.py             # Rotas das páginas deste app
+    |   ├── forms.py            # Formulários HTML com validação Python
+    |   ├── tests.py (opcional) # Testes automatizados
+    |   ├── migrations/         # Histórico de alterações no banco de dados
 
 
 🧩 Funcionalidades Esperadas:
