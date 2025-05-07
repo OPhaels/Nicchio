@@ -1,20 +1,20 @@
-🛠️ NICCHIO - Plataforma Web com Django
-    Este projeto é uma plataforma web desenvolvida com o framework Django. Seu objetivo é fornecer uma interface moderna e responsiva com diferentes áreas de acesso e funcionalidades voltadas à gestão de usuários e perfis, utilizando recursos visuais armazenados localmente.
+# 🛠️ NICCHIO - Plataforma Web com Django
+Este projeto é uma plataforma web desenvolvida com o framework Django. Seu objetivo é fornecer uma interface moderna e responsiva com diferentes áreas de acesso e funcionalidades voltadas à gestão de usuários e perfis, utilizando recursos visuais armazenados localmente.
 
 
 🚀 Como Executar?
 
-# Crie o ambiente virtual
-python -m venv venv
+Crie o ambiente virtual
+- python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# Instale as dependências
+- Instale as dependências
 pip install django
 
-# Rode as migrações iniciais
+- Rode as migrações iniciais
 python manage.py migrate
 
-# Inicie o servidor
+- Inicie o servidor
 
 
 python manage.py runserver
