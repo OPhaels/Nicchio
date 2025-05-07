@@ -43,7 +43,7 @@ python manage.py runserver
 📁 Estrutura Django Esperada:
 
     nicchio/
-    ├── manage.py
+    |   |
     ├── nicchio/
     │   ├── __init__.py
     │   ├── settings.py
@@ -71,7 +71,7 @@ python manage.py runserver
     |   ├── forms.py            # Formulários HTML com validação Python
     |   ├── tests.py (opcional) # Testes automatizados
     |   ├── migrations/         # Histórico de alterações no banco de dados
-
+    |__ manage.py
 
 🧩 Funcionalidades Esperadas:
     - Sistema de autenticação de usuários

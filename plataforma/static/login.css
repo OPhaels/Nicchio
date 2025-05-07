@@ -1,5 +1,5 @@
 body {
-  background: url(plataforma/imagens/background_coffe.jpg);
+  background: url(/plataforma/static/plataforma/imagens/background_coffe.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
