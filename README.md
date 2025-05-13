@@ -1,4 +1,4 @@
-# 🛠️ NICCHIO - Plataforma Web com Django
+# 🛠️ RITYO - Plataforma Web com Django
 Este projeto é uma plataforma web desenvolvida com o framework Django. Seu objetivo é fornecer uma interface moderna e responsiva com diferentes áreas de acesso e funcionalidades voltadas à gestão de usuários e perfis, utilizando recursos visuais armazenados localmente.
 
 
