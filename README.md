@@ -42,9 +42,9 @@ python manage.py runserver
 
 📁 Estrutura Django Esperada:
 
-    nicchio/
+    rytio/
     |   |
-    ├── nicchio/
+    ├── rytio/
     │   ├── __init__.py
     │   ├── settings.py
     │   ├── urls.py
